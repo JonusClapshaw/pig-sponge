@@ -33,7 +33,31 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    String word = "";
+    int count = 0;
+    int switcher = 0;
+    sentence = sentence.toLowerCase();
+    
+    for(int i = 0; i < sentence.length(); i++)
+    {
+      if(count % 2 == 0)
+      {
+        word += sentence.toLowerCase().charAt(i);
+        count++;
+      } else if(count % 2 != 0) {
+        word += sentence.toUpperCase().charAt(i);
+        count++;
+      } else if(sentence.charAt(i) == ' ' && switcher == 0) {
+        count = 0;
+        word += sentence.charAt(i);
+        switcher = 1;
+      } else {
+        count = 1;
+        word += sentence.charAt(i);
+        switcher = 0;
+      }
+    }
+    return word;
   }
 
 
