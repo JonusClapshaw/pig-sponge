@@ -23,19 +23,45 @@ public class Pig {
         assertEqual(4, pigLatin("y"), "yay");
         assertEqual(5, pigLatin("e"), "e");
     }
-
+    // create a new word  
+    // set the vowels and check first letter
+    // loop through the word
+    // add the word or pig latin inside the for loop
+    // return word
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        String[] word = sentence.split(" ");
+        String output = "";
+
+        for(int i = 0; i < word.length; i++){
+            output += singleWord(word[i]);
+            output += " ";
+        }
+        output = output.trim();
+        return output;
     }
 
+    public static String singleWord(String word){
+        char firstletter = word.charAt(0);
+        String newWord = "";
+        char[] vowels = {'a','e','i','o','u'};
+        boolean isVowels = false;
 
+        for(char v : vowels){
+            if(firstletter == v){
+                isVowels = true;
+            }
+        }
+        if(isVowels){
+            return word;
+        } else {
+            newWord += word.substring(1);
+            newWord += firstletter;
+            newWord += "ay";
+        }
 
-
-
-
-
-
+        return newWord;
+    }
 
     // Method to help with testing, you do not need to read this.
     public static void assertEqual(int testNumber, String actual, String expected) {
